@@ -1,0 +1,122 @@
+﻿@model canteenVLU.Models.CUSTOMER
+@using canteenVLU.Models;
+
+@{
+    Layout = null;
+    AD1Team5Entities model = new AD1Team5Entities();
+    var faculty = model.FACULTies.ToList();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VANLANG CANTEEN</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Images/favicon.ico" />
+    <!--===============================================================================================-->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/icon-font.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/hamburgers.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/animsition.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/select2.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/daterangepicker.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/util.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/custom.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+</head>
+<body class="login-page">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-form-title" style="background-image: url(../../../../Images/bg-01.jpg)">
+                    <span class="login100-form-title-1">
+                        Register
+                    </span>
+                </div>
+
+                <form id="myform" class="login100-form validate-form" action="@Url.Action("Create")" method="post">
+                    <div class="wrap-input100 m-b-26">
+                        <span class="label-input100">Email</span>
+                        <input class="input100" type="text" name="email" placeholder="Enter email address" title="Bạn cần phải nhập tên miền @("@")vanlanguni.vn" pattern="[\w.%+-]+@("@")vanlanguni\.vn" required>
+                        @if (Convert.ToBoolean(Session["email-exist"]))
+                        {
+                            <span style="color:red;"></span>
+                            Session["email-exist"] = false;
+                        }
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 m-b-18">
+                        <span class="label-input100">Password</span>
+                        <input class="input100" type="password" name="password" placeholder="Enter password" title="Password không cho phép khoảng trắng" minlength="6" maxlength="8" pattern="\S{6,}" required>
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 m-b-18">
+                        <span class="label-input100">Full Name</span>
+                        <input class="input100" type="text" name="fullname" placeholder="Enter Full Name" minlength="5" maxlength="50" required>
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 m-b-18">
+                        <span class="label-input100">Phone Number</span>
+                        <input class="input100" type="tel" name="phone" placeholder="Enter phone number" pattern="(\+84|0)\d{9,10}" required>
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 m-b-18">
+                        <span class="label-input100">Faculty</span>
+                        <select name="faculty">
+                            @foreach (var fa in faculty)
+                            {
+                                <option value="@fa.ID">@fa.FACULTY_NAME</option>
+                            }
+                        </select>
+
+                    </div>
+
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Create
+                        </button>
+
+                    </div>
+                </form>
+                <button class="login100-form-btn" onclick="window.history.back()">
+                    Back
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!--===============================================================================================-->
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/main.js"></script>
+</body>
+</html>
+

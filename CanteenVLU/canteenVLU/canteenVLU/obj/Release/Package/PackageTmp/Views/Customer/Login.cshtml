@@ -1,0 +1,104 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VANLANG CANTEEN</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Images/favicon.ico" />
+    <!--===============================================================================================-->
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="@Url.Content("~/Content/icon-font.min.css")" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="@Url.Content("~/Content/animate.css")" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="@Url.Content("~/Content/hamburgers.min.css")" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="@Url.Content("~/Content/animsition.min.css")" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="@Url.Content("~/Content/select2.min.css")" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="@Url.Content("~/Content/daterangepicker.css")" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="@Url.Content("~/Content/util.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/main.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/custom.css")" rel="stylesheet" />
+    <!--===============================================================================================-->
+</head>
+<body class="login-page">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-form-title" style="background-image: url(../../../../Images/bg-01.jpg)">
+                    <span class="login100-form-title-1">
+                        Sign In
+                    </span>
+                </div>
+
+                <form class="login100-form validate-form" action="@Url.Action("Login")" method="post">
+                    <div class="wrap-input100 m-b-26">
+                        <span class="label-input100">Username</span>
+                        <input class="input100" type="text" name="email" placeholder="Enter username">
+                        <span class="focus-input100"></span>
+                    </div>
+                    @if (Convert.ToBoolean(Session["customer-not-found"]) == true)
+                    {
+                        <p style="color: red">User not found !</p>
+                        Session["customer-not-found"] = false;
+                    }
+                    <div class="wrap-input100 m-b-18">
+                        <span class="label-input100">Password</span>
+                        <input class="input100" type="password" name="password" placeholder="Enter password">
+                        <span class="focus-input100"></span>
+                    </div>
+                    @if (Convert.ToBoolean(Session["password-incorrect"]) == true)
+                    {
+                        <p style="color: red"> Password incorrect !</p>
+                        Session["password-incorrect"] = false;
+                    }
+
+                <div class=" m-b-18">                    
+                    <a href="@Url.Action("Create")">Click here for register.</a>                   
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn">
+                        Login
+                    </button>
+                    
+                </div>
+                    
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+    <!--===============================================================================================-->
+    <script src="@Url.Content("~/Scripts/jquery-3.2.1.min.js")"></script>
+    <!--===============================================================================================-->
+    <script src="@Url.Content("~/Scripts/animsition.min.js")"></script>
+    <!--===============================================================================================-->
+    <script src="@Url.Content("~/Scripts/popper.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <!--===============================================================================================-->
+    <script src="@Url.Content("~/Scripts/select2.min.js")"></script>
+    <!--===============================================================================================-->
+    <script src="@Url.Content("~/Scripts/moment.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/daterangepicker.js")"></script>
+    <!--===============================================================================================-->
+    <script src="@Url.Content("~/Scripts/countdowntime.js")"></script>
+    <!--===============================================================================================-->
+    <script src="@Url.Content("~/Scripts/main.js")"></script>
+
+</body>
+</html>

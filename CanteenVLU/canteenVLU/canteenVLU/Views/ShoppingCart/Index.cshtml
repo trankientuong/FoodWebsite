@@ -1,0 +1,84 @@
+﻿@model IEnumerable<canteenVLU.Models.ORDER_DETAIL>
+
+@{
+    Layout = "~/Views/Shared/FoodFun.cshtml";
+    var Subtotal = 0;
+}
+
+<!DOCTYPE html>
+
+
+<div class="container" style="position:relative;">
+    <div class="order-summary clearfix">
+        <div class="section-title">
+            <h3 class="title">Cart <a style="text-decoration:underline !important;font-size:15px;font-family:'Open Sans';float:right;" href="@Url.Action("Clear","ShoppingCart")">(Clear Cart)</a></h3>
+        </div>
+
+        @using (Html.BeginForm("Edit", "ShoppingCart",FormMethod.Post))
+        {
+            <table class="shopping-cart-table table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th></th>
+                        <th class="text-center">Price</th>
+                        <th class="text-center">Quantity</th>
+                        <th class="text-center">Total</th>
+                        <th class="text-right"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        Subtotal += item.MENU.PRICE * item.QUANTITY;
+                        <tr>
+                            <td class="thumb"><img src="~/@item.MENU.FOOD.IMAGE_URL" width="100" height="100" alt=""></td>
+                            <td class="details">
+                                <a href="#">@item.MENU.FOOD.FOOD_NAME</a>
+
+                            </td>
+                            <td class="price text-center"><strong>@item.MENU.PRICE.ToString("N0") VNĐ</strong></td>
+
+                            @Html.Hidden("menu_id", item.MENU.ID)
+                            <td class="qty text-center"><input class="input" name="quantity" type="number" min="1" value="@item.QUANTITY"></td>
+
+                            <td class="total text-center"><strong class="primary-color">@((item.MENU.PRICE * item.QUANTITY).ToString("N0")) VNĐ</strong></td>
+                            <td class="text-right"><a href="@Url.Action("Delete", "ShoppingCart", new { id = item.MENU.ID })" class="main-btn icon-btn" onclick="location.href=''"><i class="fa fa-close"></i></a></td>
+                        </tr>
+                    } @*End foreach*@
+
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                    </tr>
+                    <tr>
+                    </tr>
+                    <tr>
+                        <th class="empty" colspan="3"></th>
+                        <th>TOTAL</th>
+                        <th colspan="2" class="total">@Subtotal.ToString("N0")VNĐ</th>
+                    </tr>
+                </tfoot>
+            </table>
+            <input type="submit" value="Update Cart" style="width:100px;height:50px;color: #ffffff;background: #c7501c;border-radius: 50px;" />
+        }
+        <div class="pull-left">
+            <button style="width:200px;height:50px;color: #ffffff;background: #c7501c;border-radius: 50px;" onclick="location.href='@Url.Action("Index","FOODs")'">Continue Shopping</button>
+        </div>
+      
+        <div class="pull-right">
+            @if ((Session["ShoppingCart"] as List<canteenVLU.Models.ORDER_DETAIL>)?.Count == 0)
+            {
+                
+            }
+            else
+            {
+            <button style="width:100px;height:50px;color: #ffffff;background: #c7501c;border-radius: 50px;" onclick="location.href='@Url.Action("Create", "Bill")'">Place Order</button>
+            }
+        </div>
+    </div>
+
+</div>
+

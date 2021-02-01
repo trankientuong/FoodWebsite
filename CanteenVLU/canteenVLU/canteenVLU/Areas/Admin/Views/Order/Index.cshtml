@@ -1,0 +1,85 @@
+﻿@model IEnumerable<canteenVLU.Models.ORDER>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>ORDER</h2>
+
+<p>
+    <a href="@Url.Action("Create")">
+        <i class="fas fa-plus-circle"> New order !!</i>
+    </a>
+</p>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">LIST ORDER</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ORDER_CODE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DATE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.STATUS)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FEEDBACK)
+                    </th>
+                    <th>
+                        ACCOUNT_EMAIL
+                    </th>
+                    <th>
+                        CUSTOMER_EMAIL
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ORDER_CODE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DATE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.STATUS)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FEEDBACK)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ACCOUNT.EMAIL)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CUSTOMER.EMAIL)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit",new {id = item.ID })">
+                                <i class="fas fa-edit"></i>
+                            </a> |
+                            <a href="@Url.Action("Delete",new {id = item.ID })">
+                                <i class="far fa-times-circle"></i>
+                            </a> |
+                            <a href="@Url.Action("Print",new {id = item.ID })">
+                                <i class="fas fa-print"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>

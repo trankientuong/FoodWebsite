@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6572a8c8e8ab4c9cbc72df6658b9d7b4" Name="Diagram1">
+        <EntityTypeShape EntityType="AD1Team5Model.ACCOUNT" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AD1Team5Model.CATEGORY" Width="1.5" PointX="1.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AD1Team5Model.CONTACT" Width="1.5" PointX="3.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AD1Team5Model.CUSTOMER" Width="1.5" PointX="3.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AD1Team5Model.FACULTY" Width="1.5" PointX="1.5" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AD1Team5Model.FOOD" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AD1Team5Model.INTRODUCTION" Width="1.5" PointX="2.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AD1Team5Model.MENU" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AD1Team5Model.NOTIFICATION" Width="1.5" PointX="11.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AD1Team5Model.ORDER" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AD1Team5Model.ORDER_DETAIL" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AD1Team5Model.SLIDER" Width="1.5" PointX="5.75" PointY="9.375" IsExpanded="true" />
+        <AssociationConnector Association="AD1Team5Model.FK__MENU__ACCOUNT_ID__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="AD1Team5Model.FK__ORDERS__CUST_ID__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="AD1Team5Model.FK_NOTIFICATION_ACCOUNT" ManuallyRouted="false" />
+        <AssociationConnector Association="AD1Team5Model.FK__FOOD__MENU_ID__117F9D94" ManuallyRouted="false" />
+        <AssociationConnector Association="AD1Team5Model.FK__CUSTOMERS__FACUL__0519C6AF" ManuallyRouted="false" />
+        <AssociationConnector Association="AD1Team5Model.FK__ORDERS__CUST_ID__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="AD1Team5Model.FK__MENU__FOOD_ID__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="AD1Team5Model.FK__DETAILORD__MENU___22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="AD1Team5Model.FK__NOTIFICAT__CONTE__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="AD1Team5Model.FK__DETAILORD__PRICE__21B6055D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

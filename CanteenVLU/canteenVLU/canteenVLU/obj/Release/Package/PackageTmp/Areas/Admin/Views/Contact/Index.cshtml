@@ -1,0 +1,86 @@
+﻿@model IEnumerable<canteenVLU.Models.CONTACT>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">LIST CONTACT</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EMAIL)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TITLE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DATE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CONTENT)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EMAIL)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TITLE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DATE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CONTENT)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit",new {id = item.ID })">
+                                <i class="fas fa-comment-dots"></i>
+                            </a> |
+                            <a href="@Url.Action("Details",new {id = item.ID })">
+                                <i class="fas fa-info-circle"></i>
+                            </a> |
+                            <a href="@Url.Action("Delete",new {id = item.ID })">
+                                <i class="far fa-times-circle"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EMAIL)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TITLE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DATE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CONTENT)
+                    </th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+

@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AD1Team5ModelStoreContainer" CdmEntityContainer="AD1Team5Entities">
+    <EntitySetMapping Name="ACCOUNTs">
+      <EntityTypeMapping TypeName="AD1Team5Model.ACCOUNT">
+        <MappingFragment StoreEntitySet="ACCOUNT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="FULL_NAME" ColumnName="FULL_NAME" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATEGORies">
+      <EntityTypeMapping TypeName="AD1Team5Model.CATEGORY">
+        <MappingFragment StoreEntitySet="CATEGORY">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CATEGORY_CODE" ColumnName="CATEGORY_CODE" />
+          <ScalarProperty Name="CATEGORY_NAME" ColumnName="CATEGORY_NAME" />
+          <ScalarProperty Name="IMAGE_URL" ColumnName="IMAGE_URL" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONTACTs">
+      <EntityTypeMapping TypeName="AD1Team5Model.CONTACT">
+        <MappingFragment StoreEntitySet="CONTACT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMERs">
+      <EntityTypeMapping TypeName="AD1Team5Model.CUSTOMER">
+        <MappingFragment StoreEntitySet="CUSTOMER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="FULL_NAME" ColumnName="FULL_NAME" />
+          <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="CUSTOMER_TYPE" ColumnName="CUSTOMER_TYPE" />
+          <ScalarProperty Name="FACULTY_ID" ColumnName="FACULTY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FACULTies">
+      <EntityTypeMapping TypeName="AD1Team5Model.FACULTY">
+        <MappingFragment StoreEntitySet="FACULTY">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FACULTY_CODE" ColumnName="FACULTY_CODE" />
+          <ScalarProperty Name="FACULTY_NAME" ColumnName="FACULTY_NAME" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FOODs">
+      <EntityTypeMapping TypeName="AD1Team5Model.FOOD">
+        <MappingFragment StoreEntitySet="FOOD">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FOOD_CODE" ColumnName="FOOD_CODE" />
+          <ScalarProperty Name="FOOD_NAME" ColumnName="FOOD_NAME" />
+          <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="IMAGE_URL" ColumnName="IMAGE_URL" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INTRODUCTIONs">
+      <EntityTypeMapping TypeName="AD1Team5Model.INTRODUCTION">
+        <MappingFragment StoreEntitySet="INTRODUCTION">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MENUs">
+      <EntityTypeMapping TypeName="AD1Team5Model.MENU">
+        <MappingFragment StoreEntitySet="MENU">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FOOD_ID" ColumnName="FOOD_ID" />
+          <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NOTIFICATIONs">
+      <EntityTypeMapping TypeName="AD1Team5Model.NOTIFICATION">
+        <MappingFragment StoreEntitySet="NOTIFICATION">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+          <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDERs">
+      <EntityTypeMapping TypeName="AD1Team5Model.ORDER">
+        <MappingFragment StoreEntitySet="ORDER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ORDER_CODE" ColumnName="ORDER_CODE" />
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+          <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="FEEDBACK" ColumnName="FEEDBACK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDER_DETAIL">
+      <EntityTypeMapping TypeName="AD1Team5Model.ORDER_DETAIL">
+        <MappingFragment StoreEntitySet="ORDER_DETAIL">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+          <ScalarProperty Name="MENU_ID" ColumnName="MENU_ID" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SLIDERs">
+      <EntityTypeMapping TypeName="AD1Team5Model.SLIDER">
+        <MappingFragment StoreEntitySet="SLIDER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IMAGE_URL" ColumnName="IMAGE_URL" />
+          <ScalarProperty Name="TEXT" ColumnName="TEXT" />
+          <ScalarProperty Name="ORDER" ColumnName="ORDER" />
+          <ScalarProperty Name="IS_VISIBLE" ColumnName="IS_VISIBLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

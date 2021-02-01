@@ -1,0 +1,65 @@
+﻿@model canteenVLU.Models.CONTACT
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<div>
+    <a href="@Url.Action("Index")">
+        <i class="fas fa-chevron-circle-left fa-2x"> Back to list</i>
+    </a>
+</div>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <hr />
+
+    <br />
+
+    <table>
+        <tr>
+            <th>Email</th>
+            <th>Title</th>
+            <th>Content</th>
+        </tr>
+        <tr>
+            <td>@Model.EMAIL</td>
+            <td>@Model.TITLE</td>
+            <td>@Model.CONTENT</td>
+        </tr>
+    </table>
+    <br />
+ 
+
+    <div>
+        @using (Html.BeginForm("Edit", "Contact", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <form>
+                <label for="subject">Subject:</label>
+                <input type="text" class="form-control" name="subject" required /><br />
+                <label for="message">Message:</label>
+                <textarea class="form-control" name="message" required></textarea> <br />
+                <input type="submit" class="btn-custom" value="Send" />
+            </form>
+        }
+    </div>
+
+    <hr />
+
+
+
+</body>
+</html>

@@ -1,0 +1,307 @@
+﻿@model IEnumerable<canteenVLU.Models.FOOD>
+@using canteenVLU.Models;
+
+@{
+    Layout = "~/Views/Shared/FoodFun.cshtml";
+    var model = new canteenVLU.Models.AD1Team5Entities();
+    var category = model.CATEGORies.ToList();
+    var menu = model.MENUs.ToList();
+}
+
+
+
+<div id="about" class="about-main pad-top-100 pad-bottom-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                    <h2 class="block-title"> About Us </h2>
+                    <h3>CHẤT LƯỢNG, ĐA DẠNG, HẤP DẪN...</h3>
+                    <p> Canteen Cơ sở 3 Trường Đại học Văn Lang chính thức mở cửa phục vụ sinh viên và giảng viên. </p>
+
+                    <p> Khu Food Hall Cơ sở 3 của Văn Lang được đầu tư bài bản về cơ sở vật chất, mời đầu bếp có tay nghề, lên menu món ăn phù hợp và ngon miệng, chọn nguyên liệu sạch, luân phiên đổi món mỗi ngày, có thức ăn cho người ăn chay. </p>
+
+                    <p> Trong quá trình vận hành, dựa trên phản hồi của sinh viên và giảng viên, Canteen sẽ tiếp tục điều chỉnh, hoàn thiện hơn dịch vụ của mình. </p>
+                </div>
+            </div>
+            <!-- end col -->
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                    <div class="about-images">
+                        <img class="about-main" src="~/Images/aboutimage.jpg" alt="About Main Image">
+                        <img class="about-inset" src="~/Images/insertimage.jpg" alt="About Inset Image">
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</div>
+
+<div class="special-menu pad-top-100 parallax">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                    <h2 class="block-title color-white text-center"> Special </h2>
+                   
+                </div>
+                <div class="special-box">
+                    <div id="owl-demo">
+                        @foreach (var food in Model)
+                        {
+                            <div class="item item-type-zoom">
+                                <a href="#" class="item-hover">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            @food.FOOD_NAME
+                                            <div class="line"></div>
+                                            <div class="dit-line">@food.DESCRIPTION</div>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <div class="item-image">                                   
+                                        <img src="~/@food.IMAGE_URL">                                   
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- end special-box -->
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</div>
+<!-- end special-menu -->
+
+<div id="menu" class="menu-main pad-top-100 pad-bottom-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                    <h2 class="block-title text-center">
+                        Our Menu
+                    </h2>
+                    
+                </div>
+                <div class="tab-menu">
+                    <div class="slider slider-nav">
+                        @foreach (var cate in category)
+                        {
+                            <div class="tab-title-menu">
+                                <h2>@cate.CATEGORY_NAME</h2>
+                                <p> <i class="flaticon-canape"></i> </p>
+                            </div>
+                        }
+                    </div>
+                    <div class="slider slider-single">
+                        @foreach (var cate in category)
+                        {
+                            <div>
+                                @foreach (var f in Model)
+                                {
+                                    foreach (var food in menu.Where(x => x.FOOD_ID == f.ID && x.FOOD.CATEGORY_ID.Equals(cate.ID)))
+                                    {
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                            <div class="offer-item">
+
+                                                <form action="@Url.Action("Create","ShoppingCart")" method="post">
+                                                    <img src="~/@food.FOOD.IMAGE_URL" alt="" class="img-responsive">
+                                                    <div>
+                                                        <h3>@food.FOOD.FOOD_NAME</h3>
+                                                        <p>
+                                                            @food.FOOD.DESCRIPTION.
+                                                        </p>
+
+                                                        <input type="hidden" name="menuId" value="@food.ID" />
+                                                        <input name="Quantity" class="input" type="number" value="1" min="1" max="@food.QUANTITY">
+                                                        <button type="submit" class="primary-btn add-to-cart" value="Add to Cart"><i class="fa fa-shopping-cart">Add to Cart</i></button>
+
+                                                    </div>
+                                                    <span class="offer-price">@food.PRICE</span>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- end tab-menu -->
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</div>
+<!-- end menu -->
+
+<div id="gallery" class="gallery-main pad-top-100 pad-bottom-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeIn;">
+                    <h2 class="block-title text-center">
+                        Our Gallery
+                    </h2>
+                    <p class="title-caption text-center"> </p>
+                </div>
+                <div class="gal-container clearfix">
+                    <div class="col-md-8 col-sm-12 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#1">
+                                <img src="~/images/miquang.jpg" alt="">
+                            </a>
+                            <div class="modal fade" id="1" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="~/images/miquang.jpg" alt="">
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            <h4>This is the 1 one on my Gallery</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#2">
+                                <img src="~/images/com.jpg" alt="">
+                            </a>
+                            <div class="modal fade" id="2" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="~/images/com.jpg" alt="">
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            <h4>This is the 2 one on my Gallery</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#3">
+                                <img src="~/images/che.jpg" alt="">
+                            </a>
+                            <div class="modal fade" id="3" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="~/images/che.jpg" alt="">
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            <h4>This is the 3 one on my Gallery</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#4">
+                                <img src="~/images/comchientrung.jpg" alt="">
+                            </a>
+                            <div class="modal fade" id="4" tabindex="-1" role="dialog" style="display: none;">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="~/images/comchientrung.jpg" alt="">
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            <h4>This is the 4 one on my Gallery</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#5">
+                                <img src="~/images/monnuoc.jpg" alt="">
+                            </a>
+                            <div class="modal fade" id="5" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="~/images/monnuoc.jpg" alt="">
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            <h4>This is the 5 one on my Gallery</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#9">
+                                <img src="~/images/comgakho.jpg" alt="">
+                            </a>
+                            <div class="modal fade" id="9" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="~/images/comgakho.jpg" alt="">
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            <h4>This is the 6 one on my Gallery</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-sm-12 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#10">
+                                <img src="~/images/che.jpg" alt="">
+                            </a>
+                            <div class="modal fade" id="10" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="~/images/che.jpg" alt="">
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            <h4>This is the 7 one on my Gallery</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+                <!-- end gal-container -->
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</div>

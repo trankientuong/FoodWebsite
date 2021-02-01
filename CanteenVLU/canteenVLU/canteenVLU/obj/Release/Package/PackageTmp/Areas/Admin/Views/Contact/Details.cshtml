@@ -1,0 +1,58 @@
+﻿@model canteenVLU.Models.CONTACT
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div>
+    <a href="@Url.Action("Index")">
+        <i class="fas fa-chevron-circle-left fa-2x"> Back to list</i>
+    </a>
+</div>
+
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TITLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TITLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONTENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONTENT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit",new { id = Model.ID })">
+        <i class="fas fa-comment-dots"></i> Reply
+    </a>
+</p>
+

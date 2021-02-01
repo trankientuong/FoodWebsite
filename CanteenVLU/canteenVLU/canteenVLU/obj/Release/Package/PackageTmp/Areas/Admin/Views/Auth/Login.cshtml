@@ -1,0 +1,94 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VANLANG CANTEEN</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Images/favicon.ico" />
+    <!--===============================================================================================-->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/icon-font.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/hamburgers.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/animsition.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/select2.min.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/daterangepicker.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    <link href="~/Content/util.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/custom.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+</head>
+<body class="login-page">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-form-title" style="background-image: url(../../../../Images/bg-01.jpg)">
+                    <span class="login100-form-title-1">
+                        Sign In
+                    </span>
+                </div>
+
+                <form class="login100-form validate-form" action="@Url.Action("Login")" method="post">
+                    <div class="wrap-input100 m-b-26">
+                        <span class="label-input100">Username</span>
+                        <input class="input100" type="text" name="email" placeholder="Enter username">
+                        <span class="focus-input100"></span>
+                    </div>
+                    @if (Convert.ToBoolean(Session["user-not-found"]) == true)
+                    {
+                        <p style="color: red">User not found !</p>
+                        Session["user-not-found"] = false;
+                    }                   
+                    <div class="wrap-input100 m-b-18" >
+                        <span class="label-input100">Password</span>
+                        <input class="input100" type="password" name="password" placeholder="Enter password">
+                        <span class="focus-input100"></span>
+                    </div>
+                    @if (Convert.ToBoolean(Session["password-incorrect"]) == true)
+                    {
+                        <p style="color: red"> Password incorrect !</p>
+                        Session["password-incorrect"] = false;
+                    }
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--===============================================================================================-->
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/main.js"></script>
+
+</body>
+</html>

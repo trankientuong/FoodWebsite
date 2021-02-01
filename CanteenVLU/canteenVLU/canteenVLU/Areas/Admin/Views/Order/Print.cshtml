@@ -1,0 +1,195 @@
+﻿@model canteenVLU.Models.ORDER
+
+@{
+    ViewBag.Title = "Print";
+    Layout = null;
+    int i = 1;
+    int total = 0;
+}
+
+<!DOCTYPE html>
+<!--
+  Invoice template by invoicebus.com
+  To customize this template consider following this guide https://invoicebus.com/how-to-create-invoice-template/
+  This template is under Invoicebus Template License, see https://invoicebus.com/templates/license/
+-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>VANLANG CANTEEN</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Invoicebus Invoice Template">
+    <meta name="author" content="Invoicebus">
+    <link rel="icon" type="image/png" href="@Url.Content("~/Images/logovl.jpg")" />
+    <meta name="template-hash" content="f3142bbb0a1696d5caa932ecab0fc530">
+    <link href="@Url.Content("~/Content/all.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/font-awesome.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/template.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/generator.min.css")" rel="stylesheet" />
+</head>
+
+<body>
+    <ib-span class="ib_invoice_commands_wrap ib_commands_shadow">
+        <ib-span class="ib_invoice_commands">
+            <button class="ib_default_button" onclick="window.history.back()">
+                <i class="fas fa-chevron-circle-left"></i> Back
+            </button>
+
+            <button class="ib_default_button" onclick="window.print()">
+                <i class="fas fa-print"></i> Print
+            </button>
+            <select class="ib_default_button ib_how_to_link ib_pull_right" onchange="zoomIO(event)">
+                <option>50%</option>
+                <option>75%</option>
+                <option>100%</option>
+                <option>125%</option>
+                <option>150%</option>
+            </select>
+
+        </ib-span>
+    </ib-span>
+    <div id="container">
+        <section id="memo">
+            <div class="company-name">
+                <span>VĂN LANG CANTEEN</span>
+                <div class="right-arrow"></div>
+            </div>
+
+            <div class="logo">
+                <img src="@Url.Content("~/Images/logovanlang.png")" />
+            </div>
+
+            <div class="company-info">
+                <div>
+                    <span>69/68 Đặng Thùy Trâm, P. 13, Q. Bình Thạnh, TP. HCM</span>
+                </div>
+                <div><a href="mailto:k.cntt@vanlanguni.edu.vn">k.cntt@vanlanguni.edu.vn</a></div>
+                <div>028. 71099240</div>
+            </div>
+
+        </section>
+
+        <section id="invoice-info">
+            <div>
+                <span>Ngày lập: </span>
+            </div>
+
+            <div>
+                <span>@Model.DATE.ToShortDateString()</span>
+            </div>
+        </section>
+
+        <section id="client-info">
+            <span>Khách hàng:  </span>
+            <div>
+                <span class="bold">@Model.CUSTOMER.FULL_NAME</span>
+            </div>
+
+            <div>
+                <span>@Model.CUSTOMER.PHONE_NUMBER</span>
+            </div>
+
+            <div>
+                <span>@Model.CUSTOMER.EMAIL</span>
+            </div>
+        </section>
+
+        <div class="clearfix"></div>
+
+        <section id="invoice-title-number">
+
+            <span id="title">HÓA ĐƠN MUA HÀNG</span>
+            <span id="number">#@Model.ORDER_CODE</span>
+
+        </section>
+
+        <div class="clearfix"></div>
+
+        <section id="items">
+
+            <table cellpadding="0" cellspacing="0">
+
+                <tr>
+                    <th class="no"></th> <!-- Dummy cell for the row number and row commands -->
+                    <th>MÓN ĂN</th>
+                    <th>SỐ LƯỢNG (@Model.ORDER_DETAIL.Select(x => x.QUANTITY).Sum())</th>
+                    <th>ĐƠN GIÁ</th>
+                    <th>THÀNH TIỀN</th>
+                </tr>
+                @foreach (var orderDetail in Model.ORDER_DETAIL)
+                {
+                    total += (orderDetail.PRICE * orderDetail.QUANTITY);
+                    <tr data-iterate="item">
+                        <td>@i</td> <!-- Don't remove this column as it's needed for the row commands -->
+                        <td>@orderDetail.MENU.FOOD.FOOD_NAME</td>
+                        <td>@orderDetail.QUANTITY</td>
+                        <td>@String.Format("{0:#,#.}", orderDetail.PRICE)</td>
+                        <td>@String.Format("{0:#,#.}", orderDetail.PRICE * orderDetail.QUANTITY)</td>
+                    </tr>
+                    i++;
+                }
+            </table>
+
+        </section>
+
+        <div class="currency">
+            <span>Tiền tệ: </span> <span>VNĐ</span>
+        </div>
+
+        <section id="sums">
+
+            <table cellpadding="0" cellspacing="0">
+                <tr class="amount-total">
+                    <th>Tổng tiền:</th>
+                    <td>@String.Format("{0:#,#.}", total)</td>
+                </tr>
+
+                <!-- You can use attribute data-hide-on-quote="true" to hide specific information on quotes.
+                For example Invoicebus doesn't need amount paid and amount due on quotes  -->
+                <tr data-hide-on-quote="true">
+                    <th>Đã thanh toán:</th>
+                    <td>0.00</td>
+                </tr>
+
+                <tr data-hide-on-quote="true">
+                    <th>THANH TOÁN:</th>
+                    <td>@String.Format("{0:#,#.}", total)</td>
+                </tr>
+
+            </table>
+
+        </section>
+        <div class="clearfix"></div>
+        <section id="terms">
+            <div data-ibcl-id="terms" class="ibcl_terms ib_stop_animate">@Model.CUSTOMER.FULL_NAME, cảm ơn bạn rất nhiều đã mua hàng tại Văn Lang Canteen ! ! !</div>
+        </section>
+
+        <div class="clearfix"></div>
+        <div class="payment-info">
+            <div>Sở hữu thuộc Trường Đại học Văn Lang.</div>
+        </div>
+    </div>
+    <script src="@Url.Content("~/Scripts/data.js")"></script>
+    <script type="text/javascript">
+        function zoomIO(evt) {
+            if (evt.target.value == "125%") {
+                document.body.style.zoom = "125%"
+            } else if (evt.target.value == "150%") {
+                document.body.style.zoom = "150%"
+            } else if (evt.target.value == "100%") {
+                document.body.style.zoom = "100%"
+            }
+            else if (evt.target.value == "75%") {
+                document.body.style.zoom = "75%"
+            }
+            else if (evt.target.value == "50%") {
+                document.body.style.zoom = "50%"
+            }
+        }
+    </script>
+</body>
+</html>
+
